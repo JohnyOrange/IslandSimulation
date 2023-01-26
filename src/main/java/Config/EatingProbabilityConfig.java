@@ -1,12 +1,17 @@
 package Config;
 
-
-import Animals.Animal;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class EatingProbabilityConfig {
+    public List<EatingConfigRow> getRows() {
+        return rows;
+    }
+
+    public void setRows(List<EatingConfigRow> rows) {
+        this.rows = rows;
+    }
+
     private List<EatingConfigRow> rows = new ArrayList<>();
 
     public Double getFor(String predator, String food) {
