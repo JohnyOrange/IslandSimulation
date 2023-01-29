@@ -13,6 +13,19 @@ public class GameConfig {
     public static final String ANIMAL_CONFIG_FILE_PATH = "/animalConfig.json";
     public static final AnimalConfig ANIMAL_CONFIG = initAnimalConfig();
 
+    public static final String ISLAND_CONFIG_FILE_PATH = "/islandConfig.json";
+    public static final IslandConfig ISLAND_CONFIG = initIslandConfig();
+
+    private static EatingProbabilityConfig initEatingProbablitiesConfig() {
+        try {
+            URL resource = GameConfig.class.getResource(EATING_PROBABILITIES_CONFIG_FILE_PATH);
+            File file = Paths.get(resource.toURI()).toFile();
+            JsonMapper jsonMapper = new JsonMapper();
+            return jsonMapper.readValue(file, EatingProbabilityConfig.class);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     private static AnimalConfig initAnimalConfig() {
         try {
             URL resource = GameConfig.class.getResource(ANIMAL_CONFIG_FILE_PATH);
@@ -23,14 +36,12 @@ public class GameConfig {
             throw new RuntimeException(e);
         }
     }
-
-
-    private static EatingProbabilityConfig initEatingProbablitiesConfig() {
+    private static IslandConfig initIslandConfig() {
         try {
-            URL resource = GameConfig.class.getResource(EATING_PROBABILITIES_CONFIG_FILE_PATH);
+            URL resource = GameConfig.class.getResource(ISLAND_CONFIG_FILE_PATH);
             File file = Paths.get(resource.toURI()).toFile();
             JsonMapper jsonMapper = new JsonMapper();
-            return jsonMapper.readValue(file, EatingProbabilityConfig.class);
+            return jsonMapper.readValue(file, IslandConfig.class);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -6,8 +6,9 @@ import Animals.Herbivore;
 import Island.Cell;
 
 public class Rabbit extends Herbivore {
-    public Rabbit(double weight, int maxCellPopulation, int speed, double maxSaturation, Cell cell, int offspring, Gender gender) {
-        super(weight, maxCellPopulation, speed, maxSaturation, cell, offspring, gender);
+    public Rabbit(double weight, int maxCellPopulation, int speed, double maxSaturation, Cell cell,
+                  int offspring, Gender gender, double saturation, int daysBeforeDecay) {
+        super(weight, maxCellPopulation, speed, maxSaturation, cell, offspring, gender, saturation, daysBeforeDecay);
     }
 
     public AnimalType getAnimalType(){

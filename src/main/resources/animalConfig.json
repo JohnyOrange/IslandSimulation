@@ -157,7 +157,7 @@
         "maxCellPopulation": 200,
         "speed": 0,
         "maxSaturation": 0,
-        "offspring": 1.5
+        "offspring": 0.5
       }
     }
   ]

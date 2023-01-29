@@ -1,5 +1,7 @@
 package AnimalFactory;
 
+import java.util.List;
+
 public enum AnimalType {
     WOLF(" \uD83D\uDC3A"),
     SNAKE(" \uD83D\uDC0D"),
@@ -25,6 +27,9 @@ public enum AnimalType {
     }
     public String getPicture(){
         return picture;
+    }
+    public static List<AnimalType> getPredatorsType(){
+        return List.of(WOLF, SNAKE,FOX, BEAR, EAGLE);
     }
 
 }
