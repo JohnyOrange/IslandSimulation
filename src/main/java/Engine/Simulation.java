@@ -45,7 +45,7 @@ public class Simulation implements Runnable {
                 .filter(animal -> !animal.isDead())
                 .forEach(executorService::submit);
         plantsList.forEach(executorService::submit);
-        updateAnimalCondition();
+        updateAnimalCondition(); // need to wait until all Futures are completed
         updateLists();
     }
 

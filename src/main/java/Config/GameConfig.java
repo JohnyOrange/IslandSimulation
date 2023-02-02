@@ -7,7 +7,7 @@ import java.net.URL;
 import java.nio.file.Paths;
 
 public class GameConfig {
-    public  static final String EATING_PROBABILITIES_CONFIG_FILE_PATH = "/eatingProbabilities.json";
+    public static final String EATING_PROBABILITIES_CONFIG_FILE_PATH = "/eatingProbabilities.json";
     public static final EatingProbabilityConfig EATING_PROBABILITY_CONFIG = initEatingProbablitiesConfig();
 
     public static final String ANIMAL_CONFIG_FILE_PATH = "/animalConfig.json";
@@ -42,6 +42,17 @@ public class GameConfig {
             File file = Paths.get(resource.toURI()).toFile();
             JsonMapper jsonMapper = new JsonMapper();
             return jsonMapper.readValue(file, IslandConfig.class);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static <C> C initConfig(Class<C> clazz, String pathtoFile) {
+        try {
+            URL resource = clazz.getResource(pathtoFile);
+            File file = Paths.get(resource.toURI()).toFile();
+            JsonMapper jsonMapper = new JsonMapper();
+            return jsonMapper.readValue(file, clazz);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

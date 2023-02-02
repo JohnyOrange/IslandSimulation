@@ -48,7 +48,7 @@ public class WorldGenerator {
     private static List<Eatable> generatePlants(Cell cell){
         Random random = new Random();
         List<Eatable> plantsList = new ArrayList<>();
-        double maxCellPopulation = ANIMAL_CONFIG.getFor("plants", "maxCellPopulation");
+        double maxCellPopulation = ANIMAL_CONFIG.getFor("plants", "maxCellPopulation"); //move to IslandConfig ??/?
         double growSpeed = ANIMAL_CONFIG.getFor("plants", "offspring");
         double weight = ANIMAL_CONFIG.getFor("plants", "weight");
         for (int i = 0; i < random.nextDouble(maxCellPopulation); i++) {

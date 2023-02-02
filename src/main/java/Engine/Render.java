@@ -5,10 +5,16 @@ import Animals.Animal;
 import Island.Plants;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public class Render implements Runnable{
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.toMap;
+
+public class Render implements Runnable {
     private final Simulation simulation;
+
     public Render(Simulation simulation) {
         this.simulation = simulation;
     }
@@ -17,7 +23,8 @@ public class Render implements Runnable{
     public void run() {
         printInfo();
     }
-    public void printInfo(){
+
+    public void printInfo() {
         List<Animal> animalList = simulation.getAnimalList();
         List<Plants> plantsList = simulation.getPlantsList();
 
@@ -28,11 +35,11 @@ public class Render implements Runnable{
         for (Plants plants : plantsList) {
             sumPlantsWeight = sumPlantsWeight + plants.getWeight();
         }
+        Map<AnimalType, List<Animal>> animalsByType = animalList.stream()
+                                .collect(groupingBy(Animal::getAnimalType));
+
         System.out.println("\uD83C\uDF3F: " + new DecimalFormat("#0.00").format(sumPlantsWeight) + "\t" +
-                AnimalType.WOLF.getPicture() + animalList.stream()
-                .filter(animal -> !animal.isDead())
-                .filter(animal -> animal.getAnimalType() == AnimalType.WOLF)
-                .toList().size() + "\t" +
+                AnimalType.WOLF.getPicture() + animalsByType.get(AnimalType.WOLF).size() + "\t" +
                 AnimalType.SNAKE.getPicture() + animalList.stream()
                 .filter(animal -> !animal.isDead())
                 .filter(animal -> animal.getAnimalType() == AnimalType.SNAKE)

@@ -18,7 +18,7 @@ public class AnimalConfig {
         AnimalConfigRow row = rows.stream()
                 .filter(animalConfigRow -> animalConfigRow.getAnimalName().equals(animal))
                 .findFirst()
-                .get();
+                .orElseThrow(() -> new IllegalArgumentException("Smth went wrong with parameters"));
 
         return row.getParameters().get(parameter);
     }

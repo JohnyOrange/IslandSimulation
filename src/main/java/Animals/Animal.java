@@ -48,23 +48,7 @@ public abstract class Animal implements Eatable, Runnable{
             move();
             eat();
             reproduce();
-//        double dailyAnimalConsumptionCoefficient = ISLAND_CONFIG.getDailyAnimalConsumptionCoefficient();
-//        if (isDead()){
-//            if (getDaysBeforeDecay() == 0){
-//                cell.getEatableList().remove(this);
-//            } else {
-//                daysBeforeDecay--;
-//            }
-//        } else if (saturation <= 0) {
-//            die();
-//        } else {
-//            double animalSaturation = saturation;
-//            saturation = animalSaturation - maxSaturation * dailyAnimalConsumptionCoefficient;
-//            String animalName = this.getAnimalType().toString().toLowerCase();
-//            double animalSpeed = ANIMAL_CONFIG
-//                    .getFor(animalName, "speed");
-//            speed = (int)animalSpeed;
-//        }
+            //decide to die
     }
 
 
@@ -171,7 +155,7 @@ public abstract class Animal implements Eatable, Runnable{
         }
         return destinationCell;
     }
-    protected List<Eatable> findDiet(Cell currentCell){
+    protected List<Eatable> findDiet(Cell currentCell){ //push to Predator/Herbivore classes, and make it abstract here
         List<Eatable> diet;
         List<Eatable> eatables = List.copyOf(currentCell.getEatableList());
 
